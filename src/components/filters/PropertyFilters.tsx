@@ -1,4 +1,4 @@
-import { Filter, Search, X } from "lucide-react";
+import { Filter, LucideArrowDown, Search, X } from "lucide-react";
 import { filterConfigs, getOptionLabel } from "../../entities/filterConfigs";
 import { useState, useEffect, useMemo } from "react";
 import { toast } from "sonner";
@@ -138,23 +138,39 @@ export default function PropertyFilters({
               >
                 {label}
               </label>
-              <select
-                id={key}
-                disabled={sortOrderDisabled}
-                value={tempFilters[key] || options[0]}
-                onChange={(e) => updateFilter(key, e.target.value)}
-                className={`w-full rounded-lg border  text-sm ${
-                  !sortOrderDisabled
-                    ? "border-slate-200 bg-white"
-                    : "border-black-100 !text-[#bababa]"
-                }  text-slate-900 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200 hover:border-slate-300`}
-              >
-                {options.map((option) => (
-                  <option key={option} value={option}>
-                    {getOptionLabel(key, option)}
-                  </option>
-                ))}
-              </select>
+
+              {/* Wrapper to hold custom arrow */}
+              <div className="relative">
+                <select
+                  id={key}
+                  disabled={sortOrderDisabled}
+                  value={tempFilters[key] || options[0]}
+                  onChange={(e) => updateFilter(key, e.target.value)}
+                  className={`w-full rounded-lg border text-sm appearance-none pr-8
+                    ${
+                      !sortOrderDisabled
+                        ? "border-slate-200 bg-white"
+                        : "border-black-100 !text-[#bababa]"
+                    } text-slate-900 py-2 px-3 
+                    focus:outline-none focus:ring-2 focus:ring-blue-400 
+                    focus:border-blue-400 transition-all duration-200 hover:border-slate-300`}
+                >
+                  {options.map((option) => (
+                    <option key={option} value={option}>
+                      {getOptionLabel(key, option)}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Custom dropdown arrow (replaces Safari/Chrome default) */}
+                <span
+                  className={`absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none  ${
+                    !sortOrderDisabled ? "text-black" : "text-[#bababa]"
+                  }`}
+                >
+                  <LucideArrowDown width={15} height={15} />
+                </span>
+              </div>
             </div>
           );
         })}

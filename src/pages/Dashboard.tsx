@@ -27,7 +27,7 @@ export default function Dashboard() {
           </p>
         </div>
         <StatsSection propertyDetails={propertyDetails} />
-        //
+
         <PropertyFilters
           filters={filters}
           onFiltersChange={setFilters}
