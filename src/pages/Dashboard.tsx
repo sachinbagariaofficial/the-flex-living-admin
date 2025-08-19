@@ -26,9 +26,8 @@ export default function Dashboard() {
             Reviews Dashboard
           </p>
         </div>
-
         <StatsSection propertyDetails={propertyDetails} />
-
+        //
         <PropertyFilters
           filters={filters}
           onFiltersChange={setFilters}
@@ -38,9 +37,8 @@ export default function Dashboard() {
             loadData({ itemsPerPage, filters: appliedFilters })
           }
         />
-
         {isLoading ? (
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center ">
             <Loader2 className="w-12 h-12 text-slate-500 animate-spin" />
           </div>
         ) : (

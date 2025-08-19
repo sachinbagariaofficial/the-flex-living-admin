@@ -10,8 +10,7 @@ export default function usePropertyDetails() {
     const loadData = async (params?: loadDataPropsType) => {
         setIsLoading(true);
         try {
-            console.log("params", params)
-            const url = new URL("https://flex-living-backend.onrender.com/api/reviews/hostaway");
+            const url = new URL("https://the-flex-living-backend.onrender.com/api/reviews/hostaway");
             if (params?.itemsPerPage) url.searchParams.append("limit", String(params.itemsPerPage));
 
             // Add all filters if present
@@ -54,7 +53,7 @@ export default function usePropertyDetails() {
 
         try {
             const response = await fetch(
-                `https://flex-living-backend.onrender.com/api/reviews/${reviewId}/approve?show=${newStatus}`,
+                `https://the-flex-living-backend.onrender.com/api/reviews/${reviewId}/approve?show=${newStatus}`,
                 { method: "PATCH" }
             );
             const result = await response.json();
